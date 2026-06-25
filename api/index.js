@@ -14,7 +14,12 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+      "http://localhost:5173",
+      "https://primeshieldwandsworth-frontend.vercel.app",
+      "https://primeshieldwandsworth.uk",
+      "https://www.primeshieldwandsworth.uk",
+    ],
     credentials: true,
   })
 );
