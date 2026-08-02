@@ -64,7 +64,8 @@ app.post("/api/contact", async (req, res) => {
       from: `"${BRAND_NAME}" <${process.env.EMAIL_USER}>`,
       to: process.env.RECEIVER_EMAIL,
       replyTo: email,
-      subject: `Prime Shield Contact Lead - ${service || "Website Form"}`,
+      // subject: `Prime Shield Contact Lead - ${service || "Website Form"}`
+      subject: `Prime Shield Contact Lead - ${service || "Website Form"} | #${Date.now()}`,
       text: `
 New Contact Lead
 
@@ -114,9 +115,7 @@ ${message}
       `,
     });
 
-    // console.log("CONTACT MAIL SENT:", info.messageId);
-    // console.log("CONTACT ACCEPTED:", info.accepted);
-    // console.log("CONTACT REJECTED:", info.rejected);
+
 
     res.status(200).json({
       success: true,
@@ -153,7 +152,8 @@ app.post("/api/callback", async (req, res) => {
     const info = await transporter.sendMail({
       from: `"${BRAND_NAME}" <${process.env.EMAIL_USER}>`,
       to: process.env.RECEIVER_EMAIL,
-      subject: `Prime Shield Callback Request - ${name}`,
+      // subject: `Prime Shield Callback Request - ${name} `
+      subject: `${BRAND_NAME} | Callback Request | ${name} | #${Date.now()}`,
       text: `
 New Callback Request
 
@@ -189,9 +189,7 @@ Phone: ${phone}
       `,
     });
 
-    // console.log("CALLBACK MAIL SENT:", info.messageId);
-    // console.log("CALLBACK ACCEPTED:", info.accepted);
-    // console.log("CALLBACK REJECTED:", info.rejected);
+  
 
     res.status(200).json({
       success: true,
